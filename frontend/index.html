@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pacientes</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<h1>Cadastro de Pacientes</h1>
+
+<h2 id="formTitle">Cadastrar Paciente</h2>
+
+<form id="pacienteForm">
+    <input type="text" placeholder="Nome" name="nome" required />
+    <input type="text" placeholder="Data de nascimento (dd/MM/yyyy)" name="dataNascimento" required />
+    <input type="text" placeholder="CPF" name="cpf" required />
+    <input type="text" placeholder="Telefone" name="telefone" required />
+    <input type="text" placeholder="Gênero" name="genero" required />
+    <input type="text" placeholder="Tipo Sanguíneo" name="tipoSanguineo" required />
+    <input type="number" placeholder="Peso" name="peso" step="0.01" required />
+    <input type="number" placeholder="Altura" name="altura" step="0.01" required />
+    <input type="text" placeholder="Limitação" name="limitacao" required />
+    <input type="text" placeholder="Histórico Médico" name="historicoMedico" required />
+    <input type="text" placeholder="Alergia" name="alergia" required />
+
+    <button type="submit" id="submitButton">Cadastrar</button>
+    <button type="button" id="limparButton" onclick="limpar()">Limpar</button>
+</form>
+
+<h2>Lista de Pacientes</h2>
+<ul id="pacienteList"></ul>
+
+<script src="scripts/script.js"></script>
+</body>
+</html>

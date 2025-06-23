@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 8px;
+    font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button[id="submitButton"] {
+    background-color: #78D237;
+}
+
+button[id="editButton"] {
+    background-color: #007BFF;
+}
+
+button[id="deleteButton"] {
+    background-color: #F51400
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+button[type="button"] {
+    background-color: #6c757d;
+}
+
+form.editing {
+    border: 2px solid orange;
+    background-color: #fff8e7;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+form.editing input {
+    background-color: #fffbe6;
+}
