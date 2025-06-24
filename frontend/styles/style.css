@@ -35,6 +35,7 @@ li {
 
 button {
     cursor: pointer;
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
@@ -42,10 +43,6 @@ button {
 
 button[id="submitButton"] {
     background-color: #78D237;
-}
-
-button[id="editButton"] {
-    background-color: #007BFF;
 }
 
 button[id="deleteButton"] {
@@ -69,4 +66,12 @@ form.editing {
 
 form.editing input {
     background-color: #fffbe6;
+}
+
+#resultadoBusca {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    width: fit-content;
 }

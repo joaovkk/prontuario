@@ -36,12 +36,8 @@ form.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             alert("Operação realizada com sucesso!");
-            form.reset();
-            pacienteEditandoId = null;
-            formTitle.textContent = 'Cadastrar Paciente';
-            submitButton.textContent = 'Salvar';
-            form.classList.remove('editing');
-            carregarPacientes();
+            limpar();
+            carregarListaPacientes();
         } else {
             const erro = await response.text();
             alert("Erro: " + erro);
@@ -52,7 +48,7 @@ form.addEventListener('submit', async (event) => {
 });
 
 // Carregar lista de pacientes
-async function carregarPacientes() {
+async function carregarListaPacientes() {
     list.innerHTML = '';
     try {
         const response = await fetch(apiUrl);
@@ -63,7 +59,7 @@ async function carregarPacientes() {
         pacientes.forEach(pac => {
             const item = document.createElement('li');
             item.innerHTML = `
-                <strong>${pac.nome}</strong> - CPF: ${pac.cpf} - Nascimento: ${pac.dataNascimento}
+                <strong>ID: ${pac.id}</strong> - ${pac.nome} - CPF: ${pac.cpf} - Nascimento: ${pac.dataNascimento}
                 <button id="editButton" onclick="editarPaciente(${pac.id})">Editar</button>
                 <button id="deleteButton" onclick="deletarPaciente(${pac.id})">Deletar</button>
             `;
@@ -71,7 +67,7 @@ async function carregarPacientes() {
         });
     } catch (err) {
         console.error(err);
-        list.innerHTML = '<li>Erro ao carregar pacientes</li>';
+        list.innerHTML = '<li>Lista de pacientes vazia</li>';
     }
 }
 
@@ -85,7 +81,8 @@ async function deletarPaciente(id) {
 
             if (response.ok) {
                 alert("Paciente deletado com sucesso!");
-                carregarPacientes();
+                limpar();
+                carregarListaPacientes();
             } else {
                 const erro = await response.text();
                 alert("Erro ao deletar: " + erro);
@@ -125,13 +122,12 @@ async function editarPaciente(id) {
         submitButton.style.backgroundColor = '#007BFF';
         limparButton.textContent = 'Cancelar edição';
         form.classList.add('editing');
-
     } catch (err) {
         alert("Erro ao buscar paciente.");
     }
 }
 
-// Cancelar edição
+// Limpar formulário
 function limpar() {
     pacienteEditandoId = null;
     form.reset();
@@ -142,4 +138,44 @@ function limpar() {
     form.classList.remove('editing');
 }
 
-carregarPacientes();
+async function buscarPacientePorId() {
+    const id = document.getElementById('buscaId').value.trim();
+    const resultadoDiv = document.getElementById('resultadoBusca');
+
+    if (!id) {
+        alert("Digite um ID válido.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${apiUrl}/${id}`);
+
+        if (response.ok) {
+            const paciente = await response.json();
+            resultadoDiv.innerHTML = `
+                <h3>Resultado da Busca:</h3>
+                <p><strong>Nome:</strong> ${paciente.nome}</p>
+                <p><strong>CPF:</strong> ${paciente.cpf}</p>
+                <p><strong>Data de Nascimento:</strong> ${paciente.dataNascimento}</p>
+                <p><strong>Telefone:</strong> ${paciente.telefone}</p>
+                <p><strong>Gênero:</strong> ${paciente.genero}</p>
+                <p><strong>Tipo Sanguíneo:</strong> ${paciente.tipoSanguineo}</p>
+                <p><strong>Peso:</strong> ${paciente.peso}</p>
+                <p><strong>Altura:</strong> ${paciente.altura}</p>
+                <p><strong>Limitação:</strong> ${paciente.limitacao}</p>
+                <p><strong>Histórico Médico:</strong> ${paciente.historicoMedico}</p>
+                <p><strong>Alergia:</strong> ${paciente.alergia}</p>
+            `;
+        } else if (response.status === 404) {
+            resultadoDiv.innerHTML = `<p style="color:red;">Paciente não encontrado.</p>`;
+        } else {
+            const erro = await response.text();
+            resultadoDiv.innerHTML = `<p style="color:red;">Erro: ${erro}</p>`;
+        }
+    } catch (err) {
+        resultadoDiv.innerHTML = `<p style="color:red;">Erro de conexão com a API.</p>`;
+    }
+}
+
+carregarListaPacientes();
+
