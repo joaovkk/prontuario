@@ -35,8 +35,8 @@ public class Paciente {
     private String cpf;
 
     @NotBlank(message = "O telefone é obrigatório.")
-    @Size(min = 8, max = 15, message = "O telefone deve ter entre 8 e 15 caracteres.")
-    @Pattern(regexp = "\\d{11}", message = "O telefone deve conter apenas números.")
+
+    @Pattern(regexp = "\\d{11}", message = "O telefone deve conter apenas números e ter 11 digitos.")
     private String telefone;
 
     @NotBlank(message = "O gênero é obrigatório.")
