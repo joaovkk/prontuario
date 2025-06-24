@@ -1,3 +1,41 @@
+.busca-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.busca-container div {
+    display: flex;
+    gap: 5px;
+}
+
+
+.container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Coluna esquerda */
+.esquerda {
+    flex: 1;
+    max-width: 650px;
+}
+
+/* Coluna direita */
+.direita {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;

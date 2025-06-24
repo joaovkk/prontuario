@@ -8,34 +8,55 @@
 <body>
 <h1 align="center">Prontuário Médico</h1>
 
-<h2 id="formTitle">Cadastrar Paciente</h2>
+<div class="container">
+    <!-- Coluna da Esquerda -->
+    <div class="esquerda">
+        <h2 id="formTitle">Cadastrar Paciente</h2>
 
-<form id="pacienteForm">
-    <input type="text" placeholder="Nome" name="nome" required />
-    <input type="text" placeholder="Data de nascimento (dd/MM/yyyy)" name="dataNascimento" required />
-    <input type="text" placeholder="CPF" name="cpf" required />
-    <input type="text" placeholder="Telefone" name="telefone" required />
-    <input type="text" placeholder="Gênero" name="genero" required />
-    <input type="text" placeholder="Tipo Sanguíneo" name="tipoSanguineo" required />
-    <input type="number" placeholder="Peso" name="peso" step="0.01" required />
-    <input type="number" placeholder="Altura" name="altura" step="0.01" required />
-    <input type="text" placeholder="Limitação" name="limitacao" required />
-    <input type="text" placeholder="Histórico Médico" name="historicoMedico" required />
-    <input type="text" placeholder="Alergia" name="alergia" required />
+        <form id="pacienteForm">
+            <input type="text" placeholder="Nome" name="nome" required />
+            <input type="text" placeholder="Data de nascimento (dd/MM/yyyy)" name="dataNascimento" required />
+            <input type="text" placeholder="CPF" name="cpf" required />
+            <input type="text" placeholder="Telefone" name="telefone" required />
+            <input type="text" placeholder="Gênero" name="genero" required />
+            <input type="text" placeholder="Tipo Sanguíneo" name="tipoSanguineo" required />
+            <input type="number" placeholder="Peso" name="peso" step="0.01" required />
+            <input type="number" placeholder="Altura" name="altura" step="0.01" required />
+            <input type="text" placeholder="Limitação" name="limitacao" required />
+            <input type="text" placeholder="Histórico Médico" name="historicoMedico" required />
+            <input type="text" placeholder="Alergia" name="alergia" required />
 
-    <button type="submit" id="submitButton">Cadastrar</button>
-    <button type="button" id="limparButton" onclick="limpar()">Limpar</button>
-</form>
+            <button type="submit" id="submitButton">Cadastrar</button>
+            <button type="button" id="limparButton" onclick="limpar()">Limpar</button>
+        </form>
 
-<h2>Buscar Paciente por ID</h2>
-<input type="number" id="buscaId" placeholder="Digite o ID do paciente">
-<button id="buscarButton" onclick="buscarPacientePorId()">Buscar</button>
+        <h2>Buscar Paciente</h2>
+        <div class="busca-container">
+            <!-- Busca por ID -->
+            <div>
+                <input type="number" id="buscaId" placeholder="Digite o ID do paciente">
+                <button id="buscarButton" onclick="buscarPacientePorId()">Buscar ID</button>
+            </div>
 
-<div id="resultadoBusca"></div>
+            <!-- Busca por Nome -->
+            <div>
+                <input type="text" id="buscaNome" placeholder="Digite o nome do paciente">
+                <button id="buscarNomeButton" onclick="buscarPacientePorNome()">Buscar Nome</button>
+            </div>
+        </div>
 
-<h2>Lista de Pacientes</h2>
-<ul id="pacienteList"></ul>
+        <div id="resultadoBusca"></div>
+
+    </div>
+
+    <!-- Coluna da Direita -->
+    <div class="direita">
+        <h2>Lista de Pacientes</h2>
+        <ul id="pacienteList"></ul>
+    </div>
+</div>
 
 <script src="scripts/script.js"></script>
 </body>
+
 </html>

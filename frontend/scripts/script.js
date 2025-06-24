@@ -177,5 +177,56 @@ async function buscarPacientePorId() {
     }
 }
 
+async function buscarPacientePorNome() {
+    const nome = document.getElementById('buscaNome').value.trim().toLowerCase();
+    const resultadoDiv = document.getElementById('resultadoBusca');
+
+    if (!nome) {
+        alert("Digite um nome para buscar.");
+        return;
+    }
+
+    try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) throw new Error("Erro ao buscar pacientes.");
+
+        const pacientes = await response.json();
+
+        const encontrados = pacientes.filter(p =>
+            p.nome.toLowerCase().includes(nome)
+        );
+
+        if (encontrados.length === 0) {
+            resultadoDiv.innerHTML = `<p style="color:red;">Nenhum paciente encontrado com esse nome.</p>`;
+            return;
+        }
+
+        const resultadoHTML = encontrados.map(p => `
+            <div style="margin-bottom:10px;">
+                <h3>Paciente Encontrado:</h3>
+                <p><strong>ID:</strong> ${p.id}</p>
+                <p><strong>Nome:</strong> ${p.nome}</p>
+                <p><strong>CPF:</strong> ${p.cpf}</p>
+                <p><strong>Data de Nascimento:</strong> ${p.dataNascimento}</p>
+                <p><strong>Telefone:</strong> ${p.telefone}</p>
+                <p><strong>Gênero:</strong> ${p.genero}</p>
+                <p><strong>Tipo Sanguíneo:</strong> ${p.tipoSanguineo}</p>
+                <p><strong>Peso:</strong> ${p.peso}</p>
+                <p><strong>Altura:</strong> ${p.altura}</p>
+                <p><strong>Limitação:</strong> ${p.limitacao}</p>
+                <p><strong>Histórico Médico:</strong> ${p.historicoMedico}</p>
+                <p><strong>Alergia:</strong> ${p.alergia}</p>
+                <hr>
+            </div>
+        `).join('');
+
+        resultadoDiv.innerHTML = resultadoHTML;
+    } catch (err) {
+        resultadoDiv.innerHTML = `<p style="color:red;">Erro de conexão com a API.</p>`;
+    }
+}
+
+
 carregarListaPacientes();
 
