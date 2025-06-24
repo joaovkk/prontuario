@@ -1,4 +1,4 @@
-📌 API - Prontuário de Pacientes 📌 API - Prontuário de Pacientes
+ API - Prontuário de Pacientes 
 
 ## 📍 Base URL
 ```
@@ -7,15 +7,15 @@
 
 ---
 
-## 📑 Endpoints
+##  Endpoints
 
-### ✅ 1. Listar todos os pacientes
+###  1. Listar todos os pacientes
 
 - **Método:** `GET`
 - **URL:** `/api/pacientes`
 - **Descrição:** Retorna todos os pacientes cadastrados.
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **200 OK**
 ```json
@@ -42,14 +42,14 @@
 
 ---
 
-### ✅ 2. Buscar paciente por ID
+###  2. Buscar paciente por ID
 
 - **Método:** `GET`
 - **URL:** `/api/pacientes/{id}`
 - **Parâmetros de caminho:**
     - `id` (Long): ID do paciente
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **200 OK**
 ```json
@@ -76,19 +76,19 @@ Paciente com id 1 não encontrado.
 
 ---
 
-### ✅ 3. Buscar pacientes por nome
+###  3. Buscar pacientes por nome
 
 - **Método:** `GET`
 - **URL:** `/api/pacientes/buscar`
 - **Query Parameter:**
     - `nome` (String): Nome (ou parte do nome) para busca
 
-#### 🔸 Exemplo de requisição:
+####  Exemplo de requisição:
 ```
 GET /api/pacientes/buscar?nome=Maria
 ```
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **200 OK**
 ```json
@@ -117,7 +117,7 @@ Nenhum paciente encontrado com o nome: Maria
 
 ---
 
-### ✅ 4. Criar paciente
+###  4. Criar paciente
 
 - **Método:** `POST`
 - **URL:** `/api/pacientes`
@@ -138,7 +138,7 @@ Nenhum paciente encontrado com o nome: Maria
 }
 ```
 
-#### 🔸 Regras de validação dos campos:
+####  Regras de validação dos campos:
 
 | Campo            | Validação                                                                                          |
 |------------------|----------------------------------------------------------------------------------------------------|
@@ -154,7 +154,7 @@ Nenhum paciente encontrado com o nome: Maria
 | historicoMedico  | Obrigatório, máximo 500 caracteres                                                                  |
 | alergia          | Obrigatório, máximo 300 caracteres                                                                  |
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **201 Created**
 ```json
@@ -181,7 +181,7 @@ Nenhum paciente encontrado com o nome: Maria
 
 ---
 
-### ✅ 5. Atualizar paciente
+###  5. Atualizar paciente
 
 - **Método:** `PUT`
 - **URL:** `/api/pacientes/{id}`
@@ -189,7 +189,7 @@ Nenhum paciente encontrado com o nome: Maria
     - `id` (Long): ID do paciente a ser atualizado
 - **Body esperado:** Mesmo formato do POST (criação)
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **200 OK**
 ```json
@@ -219,14 +219,14 @@ Paciente com id 3 não encontrado.
 
 ---
 
-### ✅ 6. Deletar paciente
+###  6. Deletar paciente
 
 - **Método:** `DELETE`
 - **URL:** `/api/pacientes/{id}`
 - **Parâmetros de caminho:**
     - `id` (Long): ID do paciente a ser deletado
 
-#### 🔸 Respostas:
+####  Respostas:
 
 - **204 No Content**
   Sem corpo na resposta.
