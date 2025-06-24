@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<h1>Cadastro de Pacientes</h1>
+<h1 align="center">Prontuário Médico</h1>
 
 <h2 id="formTitle">Cadastrar Paciente</h2>
 
@@ -26,6 +26,12 @@
     <button type="submit" id="submitButton">Cadastrar</button>
     <button type="button" id="limparButton" onclick="limpar()">Limpar</button>
 </form>
+
+<h2>Buscar Paciente por ID</h2>
+<input type="number" id="buscaId" placeholder="Digite o ID do paciente">
+<button id="buscarButton" onclick="buscarPacientePorId()">Buscar</button>
+
+<div id="resultadoBusca"></div>
 
 <h2>Lista de Pacientes</h2>
 <ul id="pacienteList"></ul>
